@@ -41,7 +41,13 @@ module Repim
     end
 
     def destroy
-      session[:user_id] = nil
+      if self.class.with_single_access
+        current_user.single_access_token = nil
+        current_user.save(false)
+        session[:single_access_token] = nil
+      else
+        session[:user_id] = nil
+      end
       reset_session
       flash[:notice] = "You have been logged out."
 
