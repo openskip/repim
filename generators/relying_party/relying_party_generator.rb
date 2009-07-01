@@ -6,6 +6,8 @@ class RelyingPartyGenerator < Rails::Generator::NamedBase
            "Specify User class name defailt is [User]"){|v| options[:user_klass] = "User" }
     opt.on("--user-management=generation_type",
            "'model' for generate (rspec_)model, 'singnup' for controller using Repim::Signup. default is 'signup'"){|v| options[:user_model_only] = (v == "model") }
+    opt.on("--without-single-access",
+           "Allow user login with multiple browser."){|v| options[:without_single_access] = v }
     opt.on("--openid-migration=migration_name",
            "Specify openid migration name, default is 'open_id_authentication_tables'. If value is 'none' generate nothing.") do |v|
       options[:openid_migration] = v
@@ -41,7 +43,7 @@ class RelyingPartyGenerator < Rails::Generator::NamedBase
       end
 
       generate_user_management(m, !options[:skip_sessions_spec]) unless options[:user_model_only]
-      m.dependency(care_rspec("model"), [user_klass_name, "identity_url:string", @args].flatten.compact)
+      m.dependency(care_rspec("model"), [user_klass_name, user_klass_columns, @args].flatten.compact)
 
       # FIXME very veriy dirty
       # "sleep 3" is for changing timestamp of 'create_user' or 'open_id_authentication_tables'
@@ -66,6 +68,12 @@ class RelyingPartyGenerator < Rails::Generator::NamedBase
     %w[application_controller application].
       map{|f| "app/controllers/#{f}.rb" }.
       detect{|c| File.exists?(File.expand_path(c, RAILS_ROOT)) }
+  end
+
+  def user_klass_columns
+    columns = ["identity_url:string"]
+    columns << "single_access_token:string" unless options[:without_single_access]
+    columns
   end
 
   def care_rspec(base); using_rspec? ? "rspec_#{base}" : base end

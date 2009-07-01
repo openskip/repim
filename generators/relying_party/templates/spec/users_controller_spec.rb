@@ -51,6 +51,7 @@ describe UsersController do
   describe "responding to POST create" do
     describe "with valid params" do
       before do
+        UsersController.with_single_access = false
         User.should_receive(:new).with({'these' => 'params'}).and_return(mock_user(:save => true))
 
         @identity_url = session[:identity_url] = "http://moro.openid.example.com/"
