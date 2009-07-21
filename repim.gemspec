@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{repim}
-  s.version = "0.1.10"
+  s.version = "0.1.11"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["MOROHASHI Kyosuke"]
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{Relying Party in minutes.}
   s.email = %q{moronatural@gmail.com}
   s.extra_rdoc_files = ["README.rdoc", "ChangeLog"]
-  s.files = ["README.rdoc", "ChangeLog", "Rakefile", "lib/repim.rb", "lib/repim", "lib/repim/random.rb", "lib/repim/relying_party.rb", "lib/repim/ax_attributes_adapter.rb", "lib/repim/application.rb", "lib/repim/signup.rb", "generators/relying_party", "generators/relying_party/templates", "generators/relying_party/templates/users_controller.rb", "generators/relying_party/templates/public", "generators/relying_party/templates/public/stylesheets", "generators/relying_party/templates/public/stylesheets/repim.css", "generators/relying_party/templates/public/images", "generators/relying_party/templates/public/images/openid-login.gif", "generators/relying_party/templates/views", "generators/relying_party/templates/views/sessions", "generators/relying_party/templates/views/sessions/new.html.erb", "generators/relying_party/templates/views/layouts", "generators/relying_party/templates/views/layouts/sessions.html.erb", "generators/relying_party/templates/views/users", "generators/relying_party/templates/views/users/new.html.erb", "generators/relying_party/templates/sessions_controller.rb", "generators/relying_party/templates/spec", "generators/relying_party/templates/spec/users_routing_spec.rb", "generators/relying_party/templates/spec/sessions_controller_spec.rb", "generators/relying_party/templates/spec/sessions_routing_spec.rb", "generators/relying_party/templates/spec/application_controller_spec.rb", "generators/relying_party/templates/spec/users_controller_spec.rb", "generators/relying_party/relying_party_generator.rb", "rails/init.rb"]
+  s.files = ["README.rdoc", "ChangeLog", "Rakefile", "lib/repim", "lib/repim/application.rb", "lib/repim/ax_attributes_adapter.rb", "lib/repim/random.rb", "lib/repim/relying_party.rb", "lib/repim/signup.rb", "lib/repim.rb", "generators/relying_party", "generators/relying_party/relying_party_generator.rb", "generators/relying_party/templates", "generators/relying_party/templates/public", "generators/relying_party/templates/public/images", "generators/relying_party/templates/public/images/openid-login.gif", "generators/relying_party/templates/public/stylesheets", "generators/relying_party/templates/public/stylesheets/repim.css", "generators/relying_party/templates/sessions_controller.rb", "generators/relying_party/templates/spec", "generators/relying_party/templates/spec/application_controller_spec.rb", "generators/relying_party/templates/spec/sessions_controller_spec.rb", "generators/relying_party/templates/spec/sessions_routing_spec.rb", "generators/relying_party/templates/spec/users_controller_spec.rb", "generators/relying_party/templates/spec/users_routing_spec.rb", "generators/relying_party/templates/users_controller.rb", "generators/relying_party/templates/views", "generators/relying_party/templates/views/layouts", "generators/relying_party/templates/views/layouts/sessions.html.erb", "generators/relying_party/templates/views/sessions", "generators/relying_party/templates/views/sessions/new.html.erb", "generators/relying_party/templates/views/users", "generators/relying_party/templates/views/users/new.html.erb", "rails/init.rb"]
   s.homepage = %q{http://github.com/moro/repim/}
   s.rdoc_options = ["--title", "repim documentation", "--charset", "utf-8", "--opname", "index.html", "--line-numbers", "--main", "README.rdoc", "--inline-source", "--exclude", "^(examples|extras)/"]
   s.require_paths = ["lib"]
@@ -22,11 +22,11 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<moro-open_id_authentication>, [">= 0"])
+      s.add_runtime_dependency(%q<openskip-open_id_authentication>, [">= 0"])
     else
-      s.add_dependency(%q<moro-open_id_authentication>, [">= 0"])
+      s.add_dependency(%q<openskip-open_id_authentication>, [">= 0"])
     end
   else
-    s.add_dependency(%q<moro-open_id_authentication>, [">= 0"])
+    s.add_dependency(%q<openskip-open_id_authentication>, [">= 0"])
   end
 end
